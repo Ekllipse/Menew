@@ -1,0 +1,40 @@
+package entities;
+
+public class ChaveValor {
+	private String campo;
+	private int posicao;
+	private String valor;
+	
+	public ChaveValor(String campo, int posicao) {
+		this.campo = campo;
+		this.posicao = posicao;
+	}
+
+	public String getCampo() {
+		return campo;
+	}
+
+	public void setCampo(String campo) {
+		this.campo = campo;
+	}
+
+	public int getPosicao() {
+		return posicao;
+	}
+
+	public void setPosicao(int posicao) {
+		this.posicao = posicao;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+	
+	
+	
+	
+}

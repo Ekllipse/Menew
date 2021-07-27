@@ -1,0 +1,90 @@
+package aplication;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.ChaveValor;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+
+		Scanner sc = new Scanner(System.in);
+
+		ChaveValor vectCV[] = { new ChaveValor("NUM_CONTROLE"), new ChaveValor("NUMERO"), new ChaveValor("LETRA"),
+				new ChaveValor("STATUS"), new ChaveValor("MESA"), new ChaveValor("COMANDA"), new ChaveValor("GRUPO"),
+				new ChaveValor("FONE"), new ChaveValor("NOME"), new ChaveValor("ENTREGADOR"), new ChaveValor("data"),
+				new ChaveValor("HORA"), new ChaveValor("GARCON"), new ChaveValor("NPESSOAS"),
+				new ChaveValor("APARTAMENTO"), new ChaveValor("DESCONTO"), new ChaveValor("TROCO"),
+				new ChaveValor("DT_ABERTURA"), new ChaveValor("HR_ABERTURA"), new ChaveValor("DT_FECHAMENTO"),
+				new ChaveValor("HR_FECHAMENTO"), new ChaveValor("FORMA"), new ChaveValor("AVISO"),
+				new ChaveValor("ABERTO"), new ChaveValor("COD_VIP"), new ChaveValor("CAIXA"), new ChaveValor("DT_MOV"),
+				new ChaveValor("TN_MOV"), new ChaveValor("DT_FECHA"), new ChaveValor("HR_FECHA"),
+				new ChaveValor("COO_PREVENDA"), new ChaveValor("COO_CUPOM"), new ChaveValor("ACRESCIMO"),
+				new ChaveValor("TERMINAL"), new ChaveValor("TROCO_PARA"), new ChaveValor("HORA_SAIDA"),
+				new ChaveValor("TAXA"), new ChaveValor("PONTOS"), new ChaveValor("VIP"), new ChaveValor("TIPO_PAG"),
+				new ChaveValor("MSG"), new ChaveValor("LANCTO_ORIGEM"), new ChaveValor("CONSUMACAO"),
+				new ChaveValor("LIB_CONSUMACAO"), new ChaveValor("BX_ENTREGA"), new ChaveValor("N_FABRICACAO"),
+				new ChaveValor("COD_FIDELIDADE"), new ChaveValor("VL_FIDELIDADE"), new ChaveValor("SALDO_FIDELIDADE"),
+				new ChaveValor("FORMA_PAG"), new ChaveValor("OPERACAO"), new ChaveValor("TEMPO_PEDIDO"),
+				new ChaveValor("NUM_CARTAO"), new ChaveValor("VAL_CARTAO"), new ChaveValor("CODIGO_SEG"),
+				new ChaveValor("HORA_PROG"), new ChaveValor("CUPOM_DATA"), new ChaveValor("CUPOM_HORA"),
+				new ChaveValor("N_FABRICACAO_CF"), new ChaveValor("TIPO_DESCONTO"), new ChaveValor("NOTIFICACAO"),
+				new ChaveValor("COMPUTADOR"), new ChaveValor("DT_NASC"), new ChaveValor("ENCOMENDA_DATA"),
+				new ChaveValor("ENCOMENDA_HORA"), new ChaveValor("SENHA_DIGITADA"), new ChaveValor("FID_REF"),
+				new ChaveValor("FID_CODIGO"), new ChaveValor("REG_IFOOD"), new ChaveValor("TIPO_FORMA_PAG"),
+				new ChaveValor("TABELA"), new ChaveValor("SIF"), new ChaveValor("PER_SERVICO"),
+				new ChaveValor("CPF_IDENT"), new ChaveValor("SALDO_PRE"), new ChaveValor("SALDO_POS"),
+				new ChaveValor("INTEGRA"), new ChaveValor("COD_IAPP"), new ChaveValor("FID_CPF"),
+				new ChaveValor("CENTRO"), new ChaveValor("OBS_PAGTO"), new ChaveValor("SINC_TEMP"),
+				new ChaveValor("INTG_TIPO"), new ChaveValor("RECEBIDO_MOBILE"), new ChaveValor("STATUS_ENTREGA"),
+				new ChaveValor("ENTREGA_SAIDA"), new ChaveValor("INTG_IDENTIFICADOR"), new ChaveValor("INTG_PAGAMENTO"),
+				new ChaveValor("PRECONTA_NOTIF"), new ChaveValor("ENTREGA_DATA"), new ChaveValor("BX_ENTREGA_DATA"),
+				new ChaveValor("BX_ENTREGA_HORA"), new ChaveValor("MOOVERY_STATUS"), new ChaveValor("TRACKING"),
+				new ChaveValor("IDENTIFIER"), new ChaveValor("DELIVERY_FEE"), new ChaveValor("DISTANCE"),
+				new ChaveValor("LNG_DESTINATION"), new ChaveValor("LAT_DESTINATION"), new ChaveValor("DESCONTO_PROMO"),
+				new ChaveValor("DESCONTO_DIG"), new ChaveValor("ENC_DATA"), new ChaveValor("ENC_TURNO"),
+				new ChaveValor("ENC_OPE"), new ChaveValor("INTG_TAXA"), new ChaveValor("INTG_ENTREGA"),
+				new ChaveValor("ANIV_IDENT"), new ChaveValor("ANIV_PROD"), new ChaveValor("DESCONTO_MARKETPLACE"),
+				new ChaveValor("FANTASIA"), new ChaveValor("PAINEL"), new ChaveValor("PAINEL_DATA"),
+				new ChaveValor("PAINEL_HORA"), new ChaveValor("DELIVERED_BY"), new ChaveValor("DESCONTO_DIG_TIPO"),
+				new ChaveValor("VIA"), new ChaveValor("ANEXO"), new ChaveValor("PAGAMENTO_ONLINE"),
+				new ChaveValor("ID_MARKETPLACE"), new ChaveValor("NOME_IDENT"), new ChaveValor("DESCONTO_DIG_IDENT"),
+				new ChaveValor("EXTERNAL_CARD"), };
+		
+		String path = "C:\\ConvertMYSQLtoFirebird\\MYSQL.csv";
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+			String linhaOut =  br.readLine();
+			String linha[] = linhaOut.split(",");
+
+
+			for (int i = 0; i < vectCV.length; i++) {
+				for (int j = 0; j < linha.length; j++) {
+					if (vectCV[i].getCampo().equals(linha[j])) {
+						vectCV[i].setPosicao(j);
+					}
+				}
+			}
+
+			while (linhaOut != null) {
+				linhaOut = br.readLine();
+				linha[] = linhaOut.split(",");
+				for (int i = 0; i < vectCV.length; i++) {
+					vectCV[i].setValor(linha[vectCV[i].getPosicao()]);
+				}
+
+			}
+
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+
+		sc.close();
+
+	}
+
+}

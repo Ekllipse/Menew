@@ -1,0 +1,151 @@
+package aplication;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.ChaveValor;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		
+		Scanner sc = new Scanner(System.in);
+		
+		ChaveValor vectCV[] = {new ChaveValor("NUM_CONTROLE",1),
+				new ChaveValor("NUMERO",2),
+				new ChaveValor("LETRA",3),
+				new ChaveValor("STATUS",4),
+				new ChaveValor("MESA",5),
+				new ChaveValor("COMANDA",6),
+				new ChaveValor("GRUPO",7),
+				new ChaveValor("FONE",8),
+				new ChaveValor("NOME",9),
+				new ChaveValor("ENTREGADOR",10),
+				new ChaveValor("data",11),
+				new ChaveValor("HORA",12),
+				new ChaveValor("GARCON",13),
+				new ChaveValor("NPESSOAS",14),
+				new ChaveValor("APARTAMENTO",15),
+				new ChaveValor("DESCONTO",16),
+				new ChaveValor("TROCO",17),
+				new ChaveValor("DT_ABERTURA",18),
+				new ChaveValor("HR_ABERTURA",19),
+				new ChaveValor("DT_FECHAMENTO",20),
+				new ChaveValor("HR_FECHAMENTO",21),
+				new ChaveValor("FORMA",22),
+				new ChaveValor("AVISO",23),
+				new ChaveValor("ABERTO",24),
+				new ChaveValor("COD_VIP",25),
+				new ChaveValor("CAIXA",26),
+				new ChaveValor("DT_MOV",27),
+				new ChaveValor("TN_MOV",28),
+				new ChaveValor("DT_FECHA",29),
+				new ChaveValor("HR_FECHA",30),
+				new ChaveValor("COO_PREVENDA",31),
+				new ChaveValor("COO_CUPOM",32),
+				new ChaveValor("ACRESCIMO",33),
+				new ChaveValor("TERMINAL",34),
+				new ChaveValor("TROCO_PARA",35),
+				new ChaveValor("HORA_SAIDA",36),
+				new ChaveValor("TAXA",37),
+				new ChaveValor("PONTOS",38),
+				new ChaveValor("VIP",39),
+				new ChaveValor("TIPO_PAG",40),
+				new ChaveValor("MSG",41),
+				new ChaveValor("LANCTO_ORIGEM",42),
+				new ChaveValor("CONSUMACAO",43),
+				new ChaveValor("LIB_CONSUMACAO",44),
+				new ChaveValor("BX_ENTREGA",45),
+				new ChaveValor("N_FABRICACAO",46),
+				new ChaveValor("COD_FIDELIDADE",47),
+				new ChaveValor("VL_FIDELIDADE",48),
+				new ChaveValor("SALDO_FIDELIDADE",49),
+				new ChaveValor("FORMA_PAG",50),
+				new ChaveValor("OPERACAO",51),
+				new ChaveValor("TEMPO_PEDIDO",52),
+				new ChaveValor("NUM_CARTAO",53),
+				new ChaveValor("VAL_CARTAO",54),
+				new ChaveValor("CODIGO_SEG",55),
+				new ChaveValor("HORA_PROG",56),
+				new ChaveValor("CUPOM_DATA",57),
+				new ChaveValor("CUPOM_HORA",58),
+				new ChaveValor("N_FABRICACAO_CF",59),
+				new ChaveValor("TIPO_DESCONTO",60),
+				new ChaveValor("NOTIFICACAO",61),
+				new ChaveValor("COMPUTADOR",62),
+				new ChaveValor("DT_NASC",63),
+				new ChaveValor("ENCOMENDA_DATA",64),
+				new ChaveValor("ENCOMENDA_HORA",65),
+				new ChaveValor("SENHA_DIGITADA",66),
+				new ChaveValor("FID_REF",67),
+				new ChaveValor("FID_CODIGO",68),
+				new ChaveValor("REG_IFOOD",69),
+				new ChaveValor("TIPO_FORMA_PAG",70),
+				new ChaveValor("TABELA",71),
+				new ChaveValor("SIF",72),
+				new ChaveValor("PER_SERVICO",73),
+				new ChaveValor("CPF_IDENT",74),
+				new ChaveValor("SALDO_PRE",75),
+				new ChaveValor("SALDO_POS",76),
+				new ChaveValor("INTEGRA",77),
+				new ChaveValor("COD_IAPP",78),
+				new ChaveValor("FID_CPF",79),
+				new ChaveValor("CENTRO",80),
+				new ChaveValor("OBS_PAGTO",81),
+				new ChaveValor("SINC_TEMP",82),
+				new ChaveValor("INTG_TIPO",83),
+				new ChaveValor("RECEBIDO_MOBILE",84),
+				new ChaveValor("STATUS_ENTREGA",85),
+				new ChaveValor("ENTREGA_SAIDA",86),
+				new ChaveValor("INTG_IDENTIFICADOR",87),
+				new ChaveValor("INTG_PAGAMENTO",88),
+				new ChaveValor("PRECONTA_NOTIF",89),
+				new ChaveValor("ENTREGA_DATA",90),
+				new ChaveValor("BX_ENTREGA_DATA",91),
+				new ChaveValor("BX_ENTREGA_HORA",92),
+				new ChaveValor("MOOVERY_STATUS",93),
+				new ChaveValor("TRACKING",94),
+				new ChaveValor("IDENTIFIER",95),
+				new ChaveValor("DELIVERY_FEE",96),
+				new ChaveValor("DISTANCE",97),
+				new ChaveValor("LNG_DESTINATION",98),
+				new ChaveValor("LAT_DESTINATION",99),
+				new ChaveValor("DESCONTO_PROMO",100),
+				new ChaveValor("DESCONTO_DIG",101),
+				new ChaveValor("ENC_DATA",102),
+				new ChaveValor("ENC_TURNO",103),
+				new ChaveValor("ENC_OPE",104),
+				new ChaveValor("INTG_TAXA",105),
+				new ChaveValor("INTG_ENTREGA",106),
+				new ChaveValor("ANIV_IDENT",107),
+				new ChaveValor("ANIV_PROD",108),
+				new ChaveValor("DESCONTO_MARKETPLACE",109),
+				new ChaveValor("FANTASIA",110),
+				new ChaveValor("PAINEL",111),
+				new ChaveValor("PAINEL_DATA",112),
+				new ChaveValor("PAINEL_HORA",113),
+				new ChaveValor("DELIVERED_BY",114),
+				new ChaveValor("DESCONTO_DIG_TIPO",115),
+				new ChaveValor("VIA",116),
+				new ChaveValor("ANEXO",117),
+				new ChaveValor("PAGAMENTO_ONLINE",118),
+				new ChaveValor("ID_MARKETPLACE",119),
+				new ChaveValor("NOME_IDENT",120),
+				new ChaveValor("DESCONTO_DIG_IDENT",121),
+				new ChaveValor("EXTERNAL_CARD",122),
+ }; 
+		
+		
+		
+		
+		sc.close();
+		
+		
+		
+		
+		
+
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;br.com.curso.etities&apos; to &apos;br.com.curso.entities&apos;&#x0D;&#x0A;- Original project: &apos;VetorProd&apos;&#x0D;&#x0A;- Original element: &apos;VetorProd/src/br.com.curso.etities&apos;&#x0D;&#x0A;- Renamed element: &apos;VetorProd/src/br.com.curso.entities&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;br.com.curso.etities&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;br.com.curso.etities" name="br.com.curso.entities" qualified="false" references="true" stamp="1613576885699" textual="false" version="1.0"/>
+</session>

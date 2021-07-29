@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexao {
+public class DBConn {
 	private static Connection conexao;
 	
 	public static Connection getConexao() {
@@ -23,6 +23,17 @@ public class Conexao {
 			System.out.println("Erro na conexao com o banco de dados: " + j.getMessage());
 			return null;
 		}
-		
+	
 	}
+	
+	public static void closeConnection() {
+		try {
+			if(conexao != null) {
+				conexao.close();
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 }

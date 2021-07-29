@@ -40,8 +40,9 @@ public class ChaveValor {
 	public void setValor(String valor) {
 		if(valor.contains("\"")) {
 			this.valor = valor.replace("\"", "");
-		}else
+		}else {
 		this.valor = valor;
+		}
 	}
 	
 	

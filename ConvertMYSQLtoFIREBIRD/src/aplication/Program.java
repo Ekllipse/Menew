@@ -198,7 +198,15 @@ public class Program {
 						+ vectCV[120].getValor() + "," + vectCV[121].getValor() + ");");
 
 			}
+			try {
+			for (String x : listSQL) {
+				System.out.println(x);
+				Thread.sleep(10);
 
+			}
+			}catch (Exception e) {
+				
+			}
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -210,7 +218,7 @@ public class Program {
 
 			}
 			
-			System.out.println("Arquivo gerado!");
+			System.out.println("***ARQUIVO GERADO!***");
 		}catch(IOException e) {
 			System.out.println(e.getMessage());
 		}

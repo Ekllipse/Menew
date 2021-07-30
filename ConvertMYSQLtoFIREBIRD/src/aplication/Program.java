@@ -20,9 +20,10 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
+		String num_controles = "C:\\ConvertMYSQLtoFirebird\\Num_controle.txt";
 		String path = "C:\\ConvertMYSQLtoFirebird\\MYSQL.csv";
 		String path2 = "C:\\ConvertMYSQLtoFirebird\\FIREBIRDSCRIPT.SQL";
-		
+
 		ChaveValor vectCV[] = { new ChaveValor("NUM_CONTROLE", TipoCampo.NUMERO),
 				new ChaveValor("NUMERO", TipoCampo.NUMERO), new ChaveValor("LETRA", TipoCampo.VARCHAR),
 				new ChaveValor("STATUS", TipoCampo.NUMERO), new ChaveValor("MESA", TipoCampo.NUMERO),
@@ -92,7 +93,7 @@ public class Program {
 
 		};
 		List<String> listSQL = new ArrayList<>();
-		
+		List<String> numControle = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			String linhaOut = br.readLine();
 			String linha[] = linhaOut.split(",");
@@ -112,6 +113,7 @@ public class Program {
 				for (int i = 0; i < vectCV.length; i++) {
 					for (int j = 0; j < linha.length; j++)
 						vectCV[i].setValor(linha[vectCV[i].getPosicao()]);
+
 				}
 
 				listSQL.add("UPDATE OR INSERT INTO TBCABCONTA(" + vectCV[0].getCampo() + "," + vectCV[1].getCampo()
@@ -156,7 +158,7 @@ public class Program {
 						+ vectCV[116].getCampo() + "," + vectCV[117].getCampo() + "," + vectCV[118].getCampo() + ","
 						+ vectCV[119].getCampo() + "," + vectCV[120].getCampo() + "," + vectCV[121].getCampo() + ")"
 						+ "VALUES (" + vectCV[0].getValor() + "," + vectCV[1].getValor() + "," + vectCV[2].getValor()
-						+ "," + vectCV[3].getValor() + "," + vectCV[4].getValor() + "," + vectCV[5].getValor() + ","
+						+ "," + "964" + "," + vectCV[4].getValor() + "," + vectCV[5].getValor() + ","
 						+ vectCV[6].getValor() + "," + vectCV[7].getValor() + "," + vectCV[8].getValor() + ","
 						+ vectCV[9].getValor() + "," + vectCV[10].getValor() + "," + vectCV[11].getValor() + ","
 						+ vectCV[12].getValor() + "," + vectCV[13].getValor() + "," + vectCV[14].getValor() + ","
@@ -196,33 +198,44 @@ public class Program {
 						+ vectCV[114].getValor() + "," + vectCV[115].getValor() + "," + vectCV[116].getValor() + ","
 						+ vectCV[117].getValor() + "," + vectCV[118].getValor() + "," + vectCV[119].getValor() + ","
 						+ vectCV[120].getValor() + "," + vectCV[121].getValor() + ");");
+						
+						numControle.add(vectCV[0].getValor());
+			}
 
-			}
-			try {
-			for (String x : listSQL) {
-				System.out.println(x);
-				Thread.sleep(10);
-
-			}
-			}catch (Exception e) {
-				
-			}
-			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path2))){
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path2))) {
 			for (String x : listSQL) {
-				bw.write(x);;
+				bw.write(x);
 				bw.newLine();
 
 			}
 			
+
 			System.out.println("***ARQUIVO GERADO!***");
-		}catch(IOException e) {
+
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+
+		try (BufferedWriter bw2 = new BufferedWriter( new FileWriter(num_controles))){
+			String textControl = "";
+			for(String x : numControle) {
+				textControl += x + ",";
+			}
+			textControl = "select * from tbcabconta where num_controle in (" + textControl + ")";
+			if(textControl.contains(",)")) {
+				textControl = textControl.replace(",)", ")");
+				System.out.println(textControl);
+			}
+			bw2.write( textControl);
+
+		}catch(IOException e) {
+			System.out.println("irmão deu erro: " + e.getMessage());
+		}
 		
+
 		sc.close();
 
 	}

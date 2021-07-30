@@ -116,7 +116,7 @@ public class Program {
 
 				}
 
-				listSQL.add("UPDATE OR INSERT INTO TBCABCONTA(" + vectCV[0].getCampo() + "," + vectCV[1].getCampo()
+				listSQL.add("INSERT INTO TBCABCONTA(" + vectCV[0].getCampo() + "," + vectCV[1].getCampo()
 						+ "," + vectCV[2].getCampo() + "," + vectCV[3].getCampo() + "," + vectCV[4].getCampo() + ","
 						+ vectCV[5].getCampo() + "," + vectCV[6].getCampo() + "," + vectCV[7].getCampo() + ","
 						+ vectCV[8].getCampo() + "," + vectCV[9].getCampo() + "," + vectCV[10].getCampo() + ","

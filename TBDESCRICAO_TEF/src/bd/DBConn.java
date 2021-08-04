@@ -12,8 +12,8 @@ public class DBConn {
 		try {
 			if(conexao == null) {
 				Class.forName("org.firebirdsql.jdbc.FBDriver");
-				conexao = DriverManager.getConnection("jdbc:firebirdsql://localhost/" + 
-				System.getProperty("user.dir") + "/NETUNO.FDB","SYSDBA","masterkey"); 
+				conexao = DriverManager.getConnection("jdbc:firebirdsql://localhost//" + 
+				/*System.getProperty("user.dir") */"F://WORKSPACE JAVA//ProjetosMenew//TBDESCRICAO_TEF"+ "//NETUNO.FDB","SYSDBA","masterkey"); 
 			}
 			return conexao;
 		}catch(ClassNotFoundException e) {
